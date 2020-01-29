@@ -13,6 +13,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
         fontFamily: 'QuickSand',
+        textTheme: TextTheme(
+          title: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OpenSans',
+          ),
+        ),
       ),
       home: MyHomePage(),
     );
@@ -25,20 +32,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _transactions = [
-    Transaction(
-      id: 't1',
-      title: 'Transaction 01',
-      amount: 23.43,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Transaction 02',
-      amount: 32.33,
-      date: DateTime.now(),
-    )
-  ];
+  final List<Transaction> _transactions = [];
 
   void _createTransacation(String txTitle, double txAmount) {
     final newTransaction = Transaction(
