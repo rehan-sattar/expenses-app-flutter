@@ -62,6 +62,12 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  void _deleteTransaction(String id) {
+    setState(() {
+      _transactions.removeWhere((transaction) => transaction.id == id);
+    });
+  }
+
   List<Transaction> get _getRecentTransactions {
     return _transactions.where((transaction) {
       return transaction.date.isAfter(
@@ -91,9 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Chart(
               recentTransactions: _getRecentTransactions,
             ),
-            TransactionList(
-              transactions: _transactions,
-            )
+            TransactionList(_transactions, _deleteTransaction)
           ],
         ),
       ),
